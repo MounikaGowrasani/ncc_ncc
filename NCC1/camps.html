@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Camps</title>
+    <style>
+        
+        /* CSS styles for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #333;
+            margin: 10px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color:#ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"] 
+        {
+            width: 60%;
+            margin-top: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        select#campName {
+    width: 60%;
+    margin-top: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ff7f50;
+    border-radius: 5px;
+    background-color: #fff; /* Background color for the dropdown */
+}
+
+/* Style the dropdown arrow */
+select#campName::-ms-expand {
+    display: none; /* Remove the default arrow in IE/Edge */
+}
+
+select#campName::-webkit-select {
+    appearance: none; /* Remove the default arrow in Chrome/Safari/Opera */
+}
+
+/* Style the selected option */
+select#campName option {
+    padding: 5px;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Style when the dropdown is focused */
+select#campName:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #ff7f50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    text-align: left;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border: 1px solid #ffa07a;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="button"],
+input[type="submit"] {
+    width: 48%;
+    background-color: #ff7f50;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover {
+    background-color: #ff6347;
+}
+
+@media (max-width: 768px) {
+    input[type="button"],
+    input[type="submit"] {
+        width: 50%;
+    }
+}
+
+       
+
+        #totalExpenditure {
+            background-color: #f0f0f0;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Camps Information</h2>
+    <form action="camps.php" method="post">
+        <label for="campName">Camp Name:</label>
+        <br>
+        <select id="campName" name="campName" required>
+    <option value="ATC">ATC</option>
+    <option value="CATC">CATC</option>
+    <option value="NIC">NIC</option>
+    <option value="EBSB">EBSB</option>
+    <option value="AAC">AAC</option>
+    <option value="RCTC">RCTC</option>
+    <option value="SNIC">SNIC</option>
+    <option value="TSC">TSC</option>
+    <option value="COS">COS</option>
+    <option value="ALC">ALC</option>
+    <option value="RDC">RDC</option>
+</select>
+<br><br>
+
+        <label for="location">Location:</label>
+        <br>
+        <input type="text" id="location" name="location" required><br><br>
+
+        <label for="startDate">From Date:</label>
+        <br>
+        <input type="date" id="startDate" name="startDate" required><br><br>
+
+        <label for="endDate">To Date:</label>
+        <br>
+        <input type="date" id="endDate" name="endDate" required><br><br>
+
+        <label for="dailyAllowance">Daily Allowance (per student):</label>
+        <br>
+        <input type="number" id="dailyAllowance" name="dailyAllowance" required><br><br>
+
+        <label for="travelAllowance">Travel Allowance (per student):</label>
+        <br>
+        <input type="number" id="travelAllowance" name="travelAllowance" required><br><br>
+
+        <label for="polAllowance">Petrol Oil Lubricant Allowance (POL) (per student):</label>
+        <br>
+        <input type="number" id="polAllowance" name="polAllowance" required><br><br>
+
+        <label for="numberOfStudents">Number of Students:</label>
+        <br>
+        <input type="number" id="numberOfStudents" name="numberOfStudents" required><br><br>
+
+        <label for="totalExpenditure">Total Expenditure:</label>
+        <br>
+        <input type="number" id="totalExpenditure" name="totalExpenditure" disabled><br><br>
+
+        <input type="button" value="Total Expenditure" onclick="calculateTotalExpenditure()">
+        <input type="submit" value="submit">
+
+    </form>
+
+    <script>
+        function calculateTotalExpenditure() {
+            // Get input values
+            const dailyAllowance = parseFloat(document.getElementById("dailyAllowance").value);
+            const travelAllowance = parseFloat(document.getElementById("travelAllowance").value);
+            const polAllowance = parseFloat(document.getElementById("polAllowance").value);
+            const numberOfStudents = parseInt(document.getElementById("numberOfStudents").value);
+            const startDate = new Date(document.getElementById("startDate").value);
+            const endDate = new Date(document.getElementById("endDate").value);
+
+            // Calculate the number of days
+            const numberOfDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+
+            // Calculate the total expenditure
+            const totalExpenditure = (dailyAllowance + travelAllowance + polAllowance)* numberOfDays;
+
+            // Display the total expenditure
+            document.getElementById("totalExpenditure").value = totalExpenditure.toFixed(2);
+        }
+    </script>
+</body>
+</html>

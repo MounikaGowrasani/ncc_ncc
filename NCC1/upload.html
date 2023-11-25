@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload</title>
+    <style>
+        /* Add your CSS styles here if needed */
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #007bff;
+    text-align: center;
+}
+
+form {
+    text-align: center;
+}
+
+input[type="file"] {
+    width: 80%;
+    margin: 20px auto;
+    padding: 10px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #007bff;
+    background-color: #ffffff; /* Background color for the "Choose File" button */
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <h2>Upload Schedule</h2>
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <label for="file">UPLOAD SCHEDULE:</label>
+        <br>
+        <input type="file" id="file" name="file" accept=".pdf" required><br><br>
+        <input type="submit" value="Upload File">
+        <br>
+        <br>
+        <a href="retrieve.php" >View Uploaded Schedule</a>
+    </form>
+</body>
+</html>

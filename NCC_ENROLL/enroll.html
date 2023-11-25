@@ -1,0 +1,844 @@
+<html><head>
+    <title>Cadet Enrollment</title>
+    <link rel="shortcut icon" type="image/png" href="images/titlelogo.png">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="css/navigator.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" media="screen" type="text/css" href="css/jquery-ui.css">     
+    <link type="text/css" rel="stylesheet" href="css/FrontPage.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome CDN Link for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <style>
+        #image-preview {
+            display: none;
+            max-width: 100%;
+            max-height: 200px;
+            margin-top: 10px;
+        }
+    </style>
+    <script src="script.js"></script>
+    <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <!--<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--        <style type="text/css">.goog-te-banner-frame.skiptranslate{display:none!important;}body{top:0px!important;}</style>-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var select = document.getElementById("previousappliedid");
+            var resultInput = document.getElementById("pre");
+
+            select.addEventListener("change", function () {
+                if (select.value === "Yes") {
+                    resultInput.removeAttribute("disabled");
+                } else {
+                    resultInput.setAttribute("disabled", "disabled");
+                }
+            });
+
+            // Trigger the change event to initialize the input state
+            select.dispatchEvent(new Event("change"));
+        });
+    </script>
+     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var sele = document.getElementById("pa");
+            var result = document.getElementById("pai");
+
+            sele.addEventListener("change", function () {
+                if (sele.value === "Yes") {
+                    result.removeAttribute("disabled");
+                } else {
+                    result.setAttribute("disabled", "disabled");
+                }
+            });
+
+            // Trigger the change event to initialize the input state
+            sele.dispatchEvent(new Event("change"));
+        });
+    </script>
+ <script>
+        $(document).ready(function()
+    
+        {
+            ; minage = "-21Y";
+            maxage = "-12Y";
+            $("#appform").change(function()
+            {                  
+                if($("#appform").val() == '1' || $("#appform").val()=='2')
+                {             
+                    $( "#dob" ).datepicker( "option", "maxDate", "-15Y" );
+                    $( "#dob" ).datepicker( "option", "minDate", "-24Y" );                                        
+                }
+                else if($("#appform").val() == '3' || $("#appform").val()=='4')
+                {
+                    $( "#dob" ).datepicker( "option", "maxDate", "-12Y" );
+                    $( "#dob" ).datepicker( "option", "minDate", "-18Y" );                   
+                }
+                $('#uname').text("");
+                $('#ucode').val("0");
+                
+            });
+            $( "#dob" ).datepicker({
+                dateFormat:"yy-mm-dd",
+                changeMonth: true,
+                changeYear: true,                  
+                minDate: minage,
+                maxDate: maxage ,  
+                onSelect: function( selectedDate ) {
+       
+                    var day_val = selectedDate.split('-') 
+                    var year=day_val[0]                       
+                    var age=new Date().getFullYear()-year;
+                    $("#age").val(age);                
+                }                       
+            });          
+              
+        })           
+          </script>
+    <style>
+        /* Apply styles to form elements */
+body {
+    font-family: Arial, sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+td {
+    padding: 10px;
+}
+
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 15px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    width: auto;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Apply styles to error messages */
+.error {
+    color: #f23f3f;
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Apply styles to labels */
+label {
+    font-weight: bold;
+}
+
+/* Apply styles to form headers */
+h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Apply styles to form sections */
+.form-section {
+    margin-bottom: 30px;
+}
+
+/* Apply styles to form container */
+.form-container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* Apply styles to form wrapper */
+.form-wrapper {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Apply styles to form submission message */
+.success-message {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+        tr,td{ height: 20px; }
+
+        td:first-child{ width: 5px; }
+        #msg,#msg1{ color: #F00; }
+        .calendar {
+    margin: 20px auto;
+    max-width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+    </style>
+</head>
+<body>
+        <iframe src="javascript:''" id="frontpage" tabindex="-1" style="position: absolute; width: 0px; height: 0px; border: none;"></iframe>
+        <table cellspacing="0" cellpadding="0" style="width: 100%; height: 100%;">
+            <tbody>
+                <!--            <tr>-->
+            <tr><td align="center" style="vertical-align: top;">
+                <div style="width:100%; text-align:center; font-size:18px;margin-top: 20px; color: #000099;">
+                    Application Form for NCC
+                </div>
+                <!--<div style="text-align:center;"><span style="font-style: italic" id="fyear">Application For The Year-2023</span></div>-->
+
+                <br>
+                <table border="2" cellspacing="0" cellpadding="0" style="width: 950px;">
+                    <tbody><tr><td align="center" style="vertical-align: top;">
+                                <table class="gwt-FrontTable" style="width: 100%;"><colgroup><col width="20%"><col width="40%"><col width="40%"></colgroup>
+                                    <tbody>
+                                        <tr><td align="center" colspan="4" style="vertical-align: middle;"></td></tr>
+                                        <tr><td colspan="4" align="center" style="vertical-align: middle;">
+
+                                                <form id="enrollmentform" action="preview.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForms();">
+
+                                                    <div id="wrapper">
+                                                        <center>
+                                                            <table>
+
+                                                                <tbody>
+                                                                <tr>   
+                                                                    <td colspan="5">
+
+
+                                                                        <h2>   Personal Details
+                                                                        </h2>
+
+                                                                    </td>
+                                                                </tr>
+
+
+                                                                <tr>
+                                                                    <td><label class="desc"> 1. Name<span id="req_0" class="req" required="required">*</span></label></td>
+                                                                    <td>   <input id="studentfirstname" name="studentfirstname" style="text-transform: uppercase; width: 110px;" placeholder="FirstName" class="alphabets" type="text" value="" maxlength="50" required pattern="[A-Za-z]+">
+																	<input id="studentmiddlename" name="studentmiddlename" style="text-transform: uppercase;width: 110px;" placeholder="MiddleName" class="alphabets" type="text" value="" maxlength="50" pattern="[A-Za-z]+">
+																	<input id="studentlastname" name="studentlastname" style="text-transform: uppercase;width: 110px;" placeholder="LastName" class="alphabets" type="text" value="" maxlength="50" required pattern="[A-Za-z]+">
+                                                                         
+                                                                        <label class="error" id="select_error5" style="color: rgb(252, 39, 39); display: none;"> First name can't be empty</label>
+                                                                    </td>
+
+                                                                </tr>
+
+
+                                                                <tr>
+                                                                    <td><label class="desc">2. Mobile Number</label></td>
+                                                                    <td><input id="mobileno" name="mobileno" class="numbers" type="text" value="" maxlength="10" minlength="10" required>
+                                                                        <label id="mobileno"></label> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td> <label class="desc">3. Email</label></td>
+                                                                    <td><input type="email"   id="email" name="email" value="" maxlength="60" required> 
+                                                                        <span id="emailError" style="color: red;"></span>
+                                                                    </td> 
+                                                                </tr>
+
+                                                                
+                                                                      
+                                                                <tr>
+                                                                    <td> <label class="desc">4. Gender <span id="req_0" class="req">*</span></label></td>
+
+                                                                    <td>   
+                                                                            <input type="radio" name="gender" value="Male"  required>Male<br>
+                                                                            <br>
+                                                                        
+                                                                            <input type="radio" name="gender" value="Female" required>Female<br>
+                                                                            <br>
+                                                                         
+                                                                         
+                                                                    </td>
+                                                                </tr>
+                                                                
+
+                                                               
+
+                                                                <tr>
+
+                                                                    <td><label class="desc">5. Registration number </label></td>
+                                                                    <td><input id="rno" name="rno" type="text" value="" maxlength="10"> 
+                                                                         
+                                                                    </td> 
+                                                                </tr>
+
+
+                                                                <tr>
+                                                                    <td>
+                                                                        <p><label class="desc">6. Photo<span id="req_0" class="req">*</span></label></p>
+                                                                        <p>-> Photo Size Should Be Between 2kb and 50kb</p>
+                                                                        <p>-> Photo Should Be of .jpeg Format.</p> 
+                                                                    </td>
+                                                                    <td>
+                                                                        <img id="target" src="images/defaultphoto.png" alt="your image" width="150px" height="150px"> 
+                                                                        <div>
+                                                                            <input type="file" name="photo" id="imgInp"  accept=".jpg, .jpeg, .png" required>
+                                                                            <label class="error" id="select_error6" style="color: rgb(252, 39, 39); display: none;"> Upload your photo</label>
+                                                                        </div>  
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label class="desc">7. Name of School/College<span id="req_0" class="req">*</span></label></td>
+                                                                    <td>   <select id="enrollinstitutecode" name="institutecode" required>
+                                                                            <option value="-1">Select college name</option>
+                                                                            <option value="VFSTR">vignan's Foundation for Science Technology and Research.</option>
+                                                                                                                 
+                                                                    
+                                                                        
+                                                                        </select>
+                                                                         
+                                                                        <label class="error" id="select_error4" style="color: rgb(252, 39, 39); display: none;">Select Institute</label>
+                                                                    </td>
+
+                                                                </tr>  
+
+                                                                <tr>
+
+                                                                    <td><label class="desc">8. Stream </label></td>
+                                                                    <td>
+                                                                        <select id="substream" name="substream" required>     
+                                                                            <option value="-1">Select </option>
+
+                                                                            <option value="Arts">Arts</option>
+                                                                            <option value="Science">Science </option>
+                                                                            <option value="Commerce">Commerce </option>
+																			<option value="BTech">BTech </option>
+																			<option value="BBA">BBA </option>
+																			<option value="MBA">MBA </option>
+																			<option value="BCA">BCA </option>
+																			<option value="BA LLB">BA LLB </option>
+																			<option value="BPharmacy">BPharmacy </option>
+                                                                            <option value="Others">Others </option>
+                                                                        </select> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label class="pan">9. PAN card Number</label></td>
+                                                                    <td><input id="pan" name="pan" class="pan" style="text-transform: uppercase;width:110px" type="text" value="" maxlength="10" minlength="10"  required>
+                                                                        <label id="pan"></label> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label class="ad">10. Aadhaar/UID Number</label></td>
+                                                                    <td><input id="ad" name="ad" class="ad" type="text" value="" maxlength="12" minlength="12" required pattern="[0-9]+">
+                                                                        <label id="ad"></label> </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td> <label class="desc">11. Date of Birth<span id="req_0" class="req">*</span></label></td>
+                                                                    <td>   <div class="calendar">
+                                                                        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob"  oninput="validateForm()" required>
+        <input type="hidden" id="dobdob" name="dobdob" required>
+                                                                    </div>
+                                                                    </td>
+                                                                
+                                                                </tr>
+                                                               
+
+
+
+                                                                <tr>
+                                                                    <td><label class="desc">12. Father's/Guardian's Name <span id="req_0" class="req">*</span></label></td> 
+                                                                    <td>
+                                                                        <select id="fsalutation" name="fsalutation" required>     
+                                                                            <option value="-1">Select </option>
+                                                                            <option selected="selected" value="Mr.">Mr.</option>
+                                                                            <option value="Ms.">Ms. </option>
+                                                                            <option value="Mrs.">Mrs. </option>
+                                                                        </select> 
+                                                                        
+                                                                        <label class="error" id="select_error8" style="color: rgb(252, 39, 39); display: none;"> Select title</label>
+
+                                                                        <input id="fatherfid" name="fatherfirstname" style="text-transform: uppercase;width:110px" placeholder="firstname" class="alphabets fatherid" type="text" value="" maxlength="50"required> 
+																		<input id="fathermid" name="fathermiddlename" style="text-transform: uppercase;width:110px;" placeholder="middlename" class="alphabets fatherid" type="text" value="" maxlength="50"> 
+																		<input id="fatherlid" name="fatherlastname" style="text-transform: uppercase;width:110px;" placeholder="lastname" class="alphabets fatherid" type="text" value="" maxlength="50" required>
+                                                                        
+                                                                        <label class="error" id="select_error9" style="color: rgb(252, 39, 39); display: none;"> Enter first name</label>
+                                                                    </td>     
+
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td><label class="desc">13. Mother's Name <span id="req_0" class="req">*</span></label></td> 
+                                                                    <td>
+                                                                        <select id="msalutation" name="msalutation" required>     
+                                                                            <option value="-1">Select </option>
+                                                                            <option value="Ms.">Ms. </option>
+                                                                            <option selected="selected" value="Mrs.">Mrs. </option>
+                                                                        </select> 
+                                                                        
+                                                                        <label class="error" id="select_error10" style="color: rgb(252, 39, 39); display: none;"> Select title</label>
+                                                                        <input id="motherfid" name="motherfirstname" style="text-transform: uppercase;width:110px" placeholder="firstname" class="alphabets" type="text" value="" maxlength="50" required>
+                                                                        <input id="mothermid" name="mothermiddlename" style="text-transform: uppercase;width:110px;" placeholder="middlename" class="alphabets" type="text" value="" maxlength="50" > 
+                                                                        <input id="motherlid" name="motherlastname" style="text-transform: uppercase;width:110px;" placeholder="lastname" class="alphabets" type="text" value="" maxlength="50" required>
+                                                                        
+                                                                        <label class="error" id="select_error11" style="color: rgb(252, 39, 39); display: none;"> Enter first name</label>
+                                                                    </td>                                                   
+                                                                </tr>
+                                                                <tr>
+
+                                                                </tr><tr>
+                                                                    <td><label class="desc">14. Nationality<span id="req_0" class="req">*</span></label></td>
+                                                                    <td>  <select id="nationality" name="nationality" required>     
+                                                                        <option value="India">India </option>
+                                                                  
+                                                              
+                                                                        </select> 
+                                                                        
+                                                                        <label class="error" id="select_error13" style="color: rgb(252, 39, 39); display: none;"> Select nationality</label>
+                                                                    </td>
+                                                                </tr>   
+                                                                <tr><td colspan="5">
+
+
+                                                                        <h2>Bank Details</h2>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label class="bn">15. Bank Name.</label></td>
+                                                                    <td> <input id="bn" name="bn" placeholder="Bank name" type="text" value="" maxlength="20" required>
+                                                                </td></tr>
+                                                                <tr>
+                                                                    <td><label class="desc">16. Account No.</label></td>
+                                                                    <td> <input id="accountno" name="accountno" placeholder="Account No." class="numbers" type="text" value="" maxlength="18" minlength="9" required>
+                                                                </td></tr>
+                                                                <tr>
+                                                                    <td><label class="desc">17. IFSC Code.</label></td>
+                                                                    <td> <input id="ifsccode" name="ifsccode" placeholder="IFSC code" type="text" value=""  style="text-transform: uppercase;width:110px" maxlength="11" minlength="11"   required>
+                                                                        <span id="ifscError" style="color: red;"></span></td></tr>
+
+                                                                <tr><td colspan="5">
+                                                                        <h2>Qualification</h2>
+
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label class="desc">18. Last Educational Qualification<span id="req_0" class="req">*</span></label></td>
+                                                                    <td>
+                                                                        <select id="qualification" name="qualification" required>     
+                                                                            <option value="-1">Select </option>
+                                                                            <option value="Intermediate">Intermediate</option>
+                                                                            <option value="Degree">Degree</option>
+                                                                            <option value="Diploma">Diploma</option>
+                                                                            <option value="I BTech">I BTech </option>
+                                                                            <option value="II BTech">II BTech </option>
+                                                                            <option value="III BTech">III BTech </option>
+                                                                            <option value="IV BTech">IV BTech </option>
+                        
+                                                                        </select>
+                                                                        <input id="markpercent" name="markpercent" placeholder="Marks in %" type="text" value="" maxlength="5" required>
+
+                                
+                                                                        <label class="error" id="select_error15" style="color: rgb(252, 39, 39); display: none;"> Enter marks in %</label>
+                                                                    </td>
+                                                                </tr>
+
+
+                                                            </tr>  
+
+                                                            
+
+                                                                <tr><td colspan="5"><h2> Address</h2></td></tr>
+                                                                <tr> <td><label class="desc">  Communication Address</label></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label class="desc">19. Address <span id="req_0" class="req">*</span></label></td>
+                                                                    <td> <textarea id="comaddress" name="comaddress" maxlength="250" style="text-transform: uppercase;" required></textarea>
+                                                                        
+                                                                        <label class="error" id="select_error16" style="color: rgb(252, 39, 39); display: none;"> Enter communication address</label>
+                                                                    </td>
+                                                                </tr>
+                                                                
+                                                                
+                                                                <tr>
+                                                                    <td><label class="desc">20. District Pincode <span id="req_0" class="req">*</span></label></td>
+                                                                    <td><input id="compincode" name="compincode" class="numbers" type="text" value="" maxlength="6" minlength="6" required>
+                                                                        
+                                                                        <label class="error" id="select_error19" style="color: rgb(252, 39, 39); display: none;"> Enter pincode</label>
+                                                                    </td>
+                                                                </tr>
+                                
+                                                                <tr>
+                                                                    <td><label class="desc">21. Nearest Railway Station<span id="req_0" class="req">*</span></label></td>
+                                                                    <td>  <input id="railway" name="railway" style="text-transform: uppercase;" type="text" value="" maxlength="60" required>
+                                                                        
+                                                                        <label class="error" id="select_error24" style="color: rgb(252, 39, 39); display: none;"> Enter nearest Railway station</label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label class="desc">22. Nearest Police Station<span id="req_0" class="req">*</span></label></td>
+                                                                    <td>  <input id="policestation" name="policestation" style="text-transform: uppercase;" type="text" value="" maxlength="60" required>
+                                                                        
+                                                                        <label class="error" id="select_error25" style="color: rgb(252, 39, 39); display: none;"> Enter nearest police station</label>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr><td colspan="5"><h2>Medical Information</h2></td></tr>
+                                                                <tr>
+
+                                                                    <td><label class="desc">23. Identification Mark 1</label> </td>
+
+                                                                    <td><input id="identificationmark1" name="identificationmark1" style="text-transform: uppercase;" type="text" value="" maxlength="100" required>
+                                                                        </td>
+
+                                                                </tr>
+
+                                                                <tr>
+
+                                                                    <td><label class="desc">24. Identification Mark 2</label> </td>
+                                                                    <td><input id="identificationmark2" name="identificationmark2" style="text-transform: uppercase;" type="text" value="" maxlength="100" required>
+                                                                        </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <label class="desc">25. Blood Group</label></td>
+                                                                    <td><select id="bloodgroup" name="bloodgroup" required>     
+                                                                            <option value="-1">Select </option>
+                                                                            <option value="O-ve">O-ve</option>
+                                                                            <option value="O+ve">O+ve</option>
+                                                                            <option value="A-ve">A-ve</option>
+                                                                            <option value="A+ve">A+ve</option>
+                                                                            <option value="B-ve">B-ve</option>
+                                                                            <option value="B+ve">B+ve</option>
+                                                                            <option value="AB-ve">AB-ve</option>
+                                                                            <option value="AB+ve">AB+ve</option>
+                                                                        </select> 
+                                                                        
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>
+                                                                        <label class="desc">26. Medical Complaint (If any)</label> </td>
+
+                                                                    <td><input id="medicalcomplaint" name="medicalcomplaint" style="text-transform: uppercase;" type="text" value="" maxlength="250" >
+                                                                        
+                                                                    </td>
+                                                                </tr>
+
+                                                        
+
+
+
+                                                                <tr> <td colspan="5"><h2>Other Details</h2></td></tr>
+
+                                                                <tr>
+                                                                    <td><label for="enableInput">27. Have you ever been convicted by a criminal court?<span id="req_0" class="req">*</span></label></td>
+
+    <td>
+        <select id="enableInput" name="enableInput">
+            <option value="no">No</option>
+           <!-- <option value="yes">Yes</option>-->
+        </select>
+
+        <br><br>
+        </td>
+                                                                </tr>
+                                                                <tr>
+
+                                                                    <td><label class="desc">28.Upload documents</label> </td>
+
+                                                                    <td>  <input type="file" id="fileInput" name="fileInput" accept=".pdf"  required><br>
+                                                                        <label>(pdf should consist of Aadhar card,10th,inter marsheets and Bank passbook)</label>
+                                                                        </td>
+
+                                                                </tr>
+                                                                <!--<td>
+                                                                    <label>If so in what circumstances and what was the sentence. Attach related document</label></td>
+                                                                    <td>
+                                                                        <input type="text" id="textBox" name="textBox" placeholder="Enter text" disabled required>
+                                                                        <input type="file" id="fileInput" name="fileInput" accept=".pdf" disabled required>
+                                                                    </td>-->
+                                                                <tr>
+                                                                    <td><label class="desc">29.  Are you are willing to be enrolled under the National Cadet Corps Act, 1948?<span id="req_0" class="req">*</span></label></td>
+                                                                    <td>  <select id="enrolldeclaration" name="enrolldeclaration" class="compulsorycheck" required>
+                                                                            <option value="Yes">Yes</option>
+                                                                           
+                                                                        </select>
+                                                                        
+                                                                        <label class="error" id="select_error28" style="color: rgb(252, 39, 39); display: none;"> Select the field</label>
+                                                                    </td>
+                                                                </tr>
+              
+                                                                
+                                                                <tr>
+                                                                    <td><label class="desc">30. Have you been enrolled in NCC earlier. <span id="req_0" class="req">*</span></label></td> 
+                                                                    <td><select id="previousappliedid" name="previousapplied" class="compulsorycheck" required>   
+                                                                            <option value="-1">Select </option>
+                                                                            <option value="Yes">Yes </option>
+                                                                            <option selected="selected" value="No">No </option>
+                                                                        </select> 
+                                                                        
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td> <label class="desc"> If so , Your enrollment number<span id="req_0" class="req">*</span></label></td>
+                                                                    <td>
+                                                                        <input id="pre" name="pre" style="text-transform: uppercase;" placeholder="Enrollment number" class="compulsorycheck" disabled="disabled" type="text" value="" maxlength="250" required>
+                                                                        
+                                                                    </td>
+                                                                </tr>
+                                                            
+                                                                <tr>
+                                                                    <td><label class="desc">31. Have  you been dismissed from the NCC/the territorial Army/the Indian Armed Forces? <span id="req_0" class="req">*</span></label></td> 
+                                                                    <td><select id="pa" name="pa" class="compulsory" required>   
+                                                                            <option value="-1">Select </option>
+                                                                            <option value="Yes">Yes </option>
+                                                                            <option selected="selected" value="No">No </option>
+                                                                        </select> 
+                                                                        
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td> <label class="desc"> Please provide details<span id="req_0" class="req">*</span></label></td>
+                                                                    <td>
+                                                                        <input id="pai" name="par" style="text-transform: uppercase;" placeholder="Details" class="compulsory" disabled="disabled" type="text" value="" maxlength="250" required>
+                                                                        
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label class="desc">32.NCC unit to be enrolled in :<span id="req_0" class="req">*</span></label> </td>
+                                                                    <td>  
+
+                                                                        <select id="ucode" name="ucode" required>
+                                                                            <option value="-1">Select</option>
+                                                                            <option value="65-G,10(A)GBN NCC,Guntur">65-G,10(A)GBN NCC,Guntur</option>
+                                                                            <option value="138-B,25(A)BN NCC,Guntur">138-B,25(A)BN NCC,Guntur</option>
+
+                                                                        </select>
+                                                                         
+
+                                                                        <label class="error" id="select_error" style="color: rgb(252, 39, 39); display: none;"> Select unit</label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label class="desc">33. Kin Name/Next of Kin<span id="req_0" class="req">*</span></label></td>
+                                                                    <td><input id="kinid" name="kinname" style="text-transform: uppercase;" class="alphabets" type="text" value="" maxlength="250" required>
+                                                                        
+                                                                        <label class="error" id="select_error35" style="color: rgb(252, 39, 39); display: none;">Enter kin name</label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label class="desc">34. Kin Relationship<span id="req_0" class="req">*</span></label></td>
+                                                                    <td><input id="kinrelationship" name="kinrelationship" style="text-transform: uppercase;" class="alphabets" type="text" value="" maxlength="50" required>
+                                                                        
+                                                                        <label class="error" id="select_error36" style="color: rgb(252, 39, 39); display: none;">Enter kin relationship</label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+
+                                                                    <td></td>
+                                                                    <td>   <div style="font-size: small">(Specify either parent/guardian/self)</div></td>
+
+                                                                </tr>
+                                                                <tr><td></td></tr>
+                                                                <!--<tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>-->
+                                                                <tr>
+                                                                    <td><label class="desc">35. Kin Contact Number<span id="req_0" class="req">*</span></label></td>
+                                                                    <td><input id="kincontactid" name="kincontactno" style="text-transform: uppercase;" class="numbers" type="text" value="" maxlength="10" required minlength="10"pattern="[0-9]{10}" >
+                                                                        
+                                                                        <!--<label id="msg"></label>-->
+                                                                        <label class="error" id="select_error37" style="color: rgb(252, 39, 39); display: none;">Enter kin contact no.</label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label class="desc">36. Kin Address<span id="req_0" class="req">*</span></label></td>
+                                                                    <td><textarea id="kinaddressid" name="kinaddress" maxlength="250" style="text-transform: uppercase;" required></textarea>
+                                                                        
+                                                                        <label class="error" id="select_error38" style="color: rgb(252, 39, 39); display: none;">Enter kin address</label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label class="place">37.Place</label></td>
+                                                                    <td><input id="place" name="place" class="place" type="text" value="" maxlength="10">
+                                                                        <label id="place"></label> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label class="DATE">38. Date</label></td>
+                                                                    <td><input id="DATE" name="Datee" class="DATE" type="text" value="" maxlength="10" required>
+                                                                        <label id="DATE"></label> </td>
+                                                                </tr>
+                                                                <tr><td></td>
+                                                                    <td>   <input id="savestudent" type="submit" value="Register" name="save" >
+                                                                        <!--<td>   <input id="savestudent" type="submit" value="Next" name="save"  />-->
+
+                                                                    </td></tr>
+
+                                                            </tbody></table>
+                                                        </center>          
+                                </div></form></td></tr></tbody></table>
+                </td></tr></tbody></table>
+        </td></tr></tbody></table>
+        <br><br>
+    </div>
+<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+<script>
+    const enableInput = document.getElementById("enableInput");
+    const textBox = document.getElementById("textBox");
+    const fileInput = document.getElementById("fileInput");
+
+    enableInput.addEventListener("change", function () {
+        if (enableInput.value === "yes") {
+            textBox.disabled = false;
+            fileInput.disabled = false;
+        } else {
+            textBox.disabled = true;
+            fileInput.disabled = true;
+        }
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    var currentDate = new Date();
+    var day = currentDate.getDate();
+    var month = currentDate.getMonth() + 1; // Months are zero-based
+    var year = currentDate.getFullYear();
+
+    // Format the date as DD/MM/YYYY
+    var formattedDate = (day < 10 ? "0" : "") + day + "/" + (month < 10 ? "0" : "") + month + "/" + year;
+
+    // Set the formatted date as the value of the input field
+    document.getElementById("DATE").value = formattedDate;
+});
+</script>
+<script>
+    const imgInp = document.getElementById('imgInp');
+    const targetImg = document.getElementById('target');
+
+    imgInp.addEventListener('change', function () {
+        const file = imgInp.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                targetImg.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            targetImg.src = 'images/defaultphoto.png'; // Reset to default image when no file is selected
+        }
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const adInput = document.getElementById("ad");
+
+    adInput.addEventListener("input", function () {
+        // Remove any non-numeric characters
+        adInput.value = adInput.value.replace(/[^0-9]/g, '');
+    });
+});
+</script>
+<script>
+</script>
+<script>
+    function validateEmail(email) {
+        const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return pattern.test(email);
+    }
+
+    function validatePANCard(panNumber) {
+        const pattern = /^[A-Za-z]{5}[0-9]{4}[A-Za-z]$/;
+        return pattern.test(panNumber);
+    }
+
+    function validateIFSCCode(ifscCode) {
+        const pattern = /^[A-Za-z]{4}0[A-Za-z0-9]{6}$/;
+        return pattern.test(ifscCode);
+    }
+
+    function validateForms() {
+        const email = document.getElementById("email").value;
+        const panNumber = document.getElementById("pan").value;
+        const ifscCode = document.getElementById("ifsccode").value;
+
+        if (!validateEmail(email)) {
+            alert("Invalid Email");
+            return false;
+        }
+
+        if (!validatePANCard(panNumber)) {
+            alert("Invalid PAN Card Number");
+            return false;
+        }
+
+        if (!validateIFSCCode(ifscCode)) {
+            alert("Invalid IFSC Code");
+            return false;
+        }
+
+        // All validations passed, allow form submission
+        return true;
+    }
+</script>
+
+<script>
+ 
+ function validateForm() {
+            var dobInput = document.getElementById('dob');
+            var selectedDate = new Date(dobInput.value);
+            
+            // Format day as two digits (e.g., '01' instead of '1')
+            var day = ('0' + selectedDate.getDate()).slice(-2);
+
+            // Get the month in three-letter format (e.g., 'Apr')
+            var month = selectedDate.toLocaleString('default', { month: 'short' });
+
+            // Get the full year (e.g., '2003')
+            var year = selectedDate.getFullYear();
+
+            var formattedDOB = day + ' ' + month + ' ' + year;
+
+   
+
+            alert('Date of Birth: ' + formattedDOB);
+            
+            document.getElementById('dobdob').value = formattedDOB;
+             // Prevent form submission for this example
+        }
+        
+</script>
+<script>
+    function varm() {
+        var panNumber = document.getElementById("panNumber").value;
+        var panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+
+        if (!panPattern.test(panNumber)) {
+            document.getElementById("errorText").textContent = "Invalid PAN Card Number";
+        } else {
+            document.getElementById("errorText").textContent = "";
+            // PAN card is valid, you can proceed with the registration.
+        }
+    }
+</script>
+</body></html>

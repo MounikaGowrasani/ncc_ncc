@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Events</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+h2 {
+    color: #333;
+    margin: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color:#ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h2>Add Events</h2>
+    <form action="events.php" method="post">
+        <label for="eventName">Event Name:</label>
+        <br>
+        <input type="text" id="eventName" name="eventName" required><br><br>
+
+        <label for="eventType">Event Type:</label>
+        <br>
+        <select id="eventType" name="eventType">
+            <option value="Institution">Institution</option>
+            <option value="state">State</option>
+            <option value="National">National</option>
+        </select><br><br>
+
+        <label for="startDate">From Date:</label>
+        <br>
+        <input type="date" id="startDate" name="startDate" required><br><br>
+
+        <label for="endDate">To Date:</label>
+        <br>
+        <input type="date" id="endDate" name="endDate" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,82 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Style for the modal content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for the close button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style for form labels */
+label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Style for form inputs */
+input[type=password] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Style for the submit button */
+input[type=submit] {
+    width: 100%;
+    background-color: #e2a33b;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type=submit]:hover {
+    background-color: rgb(255, 103, 15);
+}
+#profile-details {
+    display: none;
+    background-color: #fff;
+    padding: 20px;
+    border-radius:12px;
+    text-align: left;
+    color: #333;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    z-index: 1;
+}

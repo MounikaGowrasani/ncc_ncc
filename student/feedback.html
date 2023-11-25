@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            border:none;
+            background: #fff;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        select {
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form action="feedback.php" method="POST">
+
+        <center><h1><b>FEEDBACK</b></h1></center>
+        <br>
+        
+        <label for="feedback">Provide Feedback:</label>
+        <textarea id="feedback" name="feedback" rows="4" cols="50" required></textarea>
+        
+        <label for="rating">Rating :</label>
+        <select id="rating" name="rating" required>
+            <option value="-1">select rating</option>
+            <option value="1(poor)">1 (Poor)</option>
+            <option value="2(fair)">2 (Fair)</option>
+            <option value="3(average)">3 (Average)</option>
+            <option value="4(good)">4 (Good)</option>
+            <option value="5(excellent)">5 (Excellent)</option>
+        </select>
+        <br>
+        <br>
+      
+        
+
+        
+        <center><input type="submit" value="Submit"></center>
+    </form>
+</body>
+</html>
